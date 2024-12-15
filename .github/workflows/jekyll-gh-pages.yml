@@ -30,6 +30,25 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        # Vue.jsのビルドプロセス
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Vue.js dependencies
+        run: npm install
+        working-directory: . # Vue.jsのルートディレクトリを指定
+      - name: Build Vue.js app
+        run: npm run build
+        working-directory: .
+
+      # ビルド結果をJekyll用ディレクトリにコピー
+      - name: Copy Vue.js build to Jekyll site
+        run: cp -r ./dist ./assets/vue # 出力先をJekyllの_assetsや_staticディレクトリ内に配置
+
+      # Jekyllのビルドプロセス
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
