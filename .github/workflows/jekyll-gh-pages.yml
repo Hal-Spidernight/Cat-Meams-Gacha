@@ -40,11 +40,11 @@ jobs:
         working-directory: . # Vue.jsのルートディレクトリを指定
       - name: Build Vue.js app
         run: npm run build
-        working-directory: .
+        working-directory: ./vue-app
 
       # ビルド結果をJekyll用ディレクトリにコピー
       - name: Copy Vue.js build to Jekyll site
-        run: cp -r ./dist ./assets/vue # 出力先をJekyllの_assetsや_staticディレクトリ内に配置
+        run: cp -r ./vue-app/dist ./assets/vue # 出力先をJekyllの_assetsや_staticディレクトリ内に配置
 
       # Jekyllのビルドプロセス
       - name: Setup Pages
@@ -52,7 +52,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./vue-app
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
