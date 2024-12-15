@@ -10,17 +10,17 @@ export const GRADE_LIST: Record<GradeKeys, GradeItem> = {
     "SR": {
         initial: "SR",
         name: "Super Rare",
-        probability: 0.2
+        probability: 0.15
     },
     "R": {
         initial: "R",
         name: "Rare",
-        probability: 0.25
+        probability: 0.3
     },
     "N": {
         initial: "N",
         name: "Normal",
-        probability: 0.50
+        probability: 0.6
     }
 }
 
