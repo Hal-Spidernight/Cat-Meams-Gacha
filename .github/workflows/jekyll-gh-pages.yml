@@ -36,11 +36,11 @@ jobs:
           node-version: 20
       - name: Build Vue.js App
         run: npm run build
-        working-directory: ./
+        working-directory: ./vue-app
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./dist
+          source: ./vue-app/dist
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
