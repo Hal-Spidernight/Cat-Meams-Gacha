@@ -34,11 +34,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
+      - name: Install yarn
+        run: npm install yarn -g
       - name: Install Vue.js dependencies
-        run: npm install
+        run: yarn install
         working-directory: ./vue-app
       - name: Build Vue.js App
-        run: npm run build
+        run: yarn build
         working-directory: ./vue-app
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
