@@ -34,6 +34,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
+      - name: Install Vue.js dependencies
+        run: npm install
+        working-directory: ./vue-app
       - name: Build Vue.js App
         run: npm run build
         working-directory: ./vue-app
