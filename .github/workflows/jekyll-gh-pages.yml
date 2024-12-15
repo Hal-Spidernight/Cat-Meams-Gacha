@@ -27,32 +27,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: Setup Pages
-        uses: actions/configure-pages@v5
-        # Vue.jsのビルドプロセス
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-      - name: Install Vue.js dependencies
-        run: npm install
-        working-directory: ./vue-app # Vue.jsのルートディレクトリを指定
-      - name: Build Vue.js app
-        run: npm run build
-        working-directory: ./vue-app
-      - name: Copy Vue.js build to Jekyll site
-        run: cp -r ./vue-app/dist ./assets/vue # 出力先をJekyllの_assetsや_staticディレクトリ内に配置
-      # Jekyllのビルドプロセス
+        uses: actions/configure-pages@v3
+      - run: npm run build
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./dist
           destination: ./_site
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./_site
+        uses: actions/upload-pages-artifact@v1
   # Deployment job
   deploy:
     environment:
