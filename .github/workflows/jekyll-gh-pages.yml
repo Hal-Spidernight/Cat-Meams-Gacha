@@ -34,8 +34,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-
-      - run: npm run build
+      - name: Build Vue.js App
+        run: npm run build
+        working-directory: ./
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
