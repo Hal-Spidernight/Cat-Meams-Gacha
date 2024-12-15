@@ -58,10 +58,6 @@ const onExecuteGacha = async (count = 1) => {
   })
 }
 
-const onExecuteTenCountGacha = async () => {
-  onExecuteGacha
-}
-
 </script>
 
 <template>
@@ -87,7 +83,7 @@ const onExecuteTenCountGacha = async () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <a :href="currenAnkerPath">YouTubeで見る</a>
+        <a :href="currenAnkerPath" target="blank">YouTubeで見る</a>
       </div>
       <h2 v-else-if="isLoading">ガチャ中・・・</h2>
     </div>
@@ -97,7 +93,7 @@ const onExecuteTenCountGacha = async () => {
         <li v-for="(el, idx) in gachaResult" :key="idx" style="display: flex;">
           <p style="width:20rem">{{ `【${el.grade.initial}】${idx + 1} :${el.desc_jp}` }}</p>
           <button>
-            <a :href="getAnkerPath(el.movieId)">YouTube</a>
+            <a :href="getAnkerPath(el.movieId)" target="blank">YouTube</a>
           </button>
         </li>
       </ul>
