@@ -37,7 +37,7 @@ jobs:
           node-version: 16
       - name: Install Vue.js dependencies
         run: npm install
-        working-directory: . # Vue.jsのルートディレクトリを指定
+        working-directory: ./vue-app # Vue.jsのルートディレクトリを指定
       - name: Build Vue.js app
         run: npm run build
         working-directory: ./vue-app
