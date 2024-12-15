@@ -41,16 +41,15 @@ jobs:
       - name: Build Vue.js app
         run: npm run build
         working-directory: ./vue-app
-      - name: List Build Dirs
-        run: ls
-        working-directory: ./
+      # - name: Copy Vue.js build to Jekyll site
+      #   run: cp -r ./vue-app/dist ./assets/vue # 出力先をJekyllの_assetsや_staticディレクトリ内に配置
       # Jekyllのビルドプロセス
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./vue-app
+          source: ./
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
